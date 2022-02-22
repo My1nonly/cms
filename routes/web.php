@@ -14,5 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    echo "Hi! Welcome To Laravel";
+    
 });
+
+Route::get("/about", function(){
+    return view ('about');
+});
+
+Route::get('/{id}', function ($id) {
+    echo "This is an article page with ID: $id";
+    });

@@ -25,7 +25,6 @@
           <br>Muhammad Hafiz Sayyid Diangga</br>
           <br>Class : TI-2I</br>
           <br>SID : 2041720156</br>
-     
                 </div>
             </div>
         </div>
