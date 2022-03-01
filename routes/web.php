@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\CompanyController;
+//use App\Http\Controllers\PageController;
+//use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +15,7 @@ use App\Http\Controllers\CompanyController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 //Practicum1
 Route::get('/', function () {
     echo "Hi! Welcome To Laravel";
@@ -73,3 +75,15 @@ Route::prefix('/program')->group(function () {
 Route::get('/about', function () {
     echo "About Us";
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+*/
+
+
+//Week3 - Practicum 1
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
