@@ -1,3 +1,6 @@
+@extends('layouts.main')
+
+@section('content')
 <!DOCTYPE html> 
 <!--
     Free  Template by Mohamed Sobhy
