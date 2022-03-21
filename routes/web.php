@@ -85,5 +85,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
-Route::get('/', [HomeController::class,'admin']);
+Route::get('/', [HomeController::class, 'index']);
 
+Route::get('/dishes', [HomeController::class, 'dishes']);
+
+Route::get('/map', [HomeController::class, 'map']);
+
+Route::get('/book', [HomeController::class, 'book']);
+
+Route::get('/contact', [HomeController::class, 'contact']);
+
+Route::get('/feedback', [HomeController::class, 'feedback']);

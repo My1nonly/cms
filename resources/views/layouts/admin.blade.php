@@ -367,3 +367,4 @@ new WOW().init();
 </body>
 
 </html>
+@endsection
