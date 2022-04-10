@@ -96,3 +96,4 @@ new WOW().init();
       </div> <!-- End of Slider-->
 </div> <!-- end of sliderwrapper-->
 </html>
+@endsection

@@ -50,3 +50,4 @@
       </div> <!-- end of slider-->
     </div> <!-- end of besth dishes-->
 </div> <!-- end of bestdishes wrapper-->
+@endsection

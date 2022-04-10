@@ -96,3 +96,7 @@ Route::get('/book', [HomeController::class, 'book']);
 Route::get('/contact', [HomeController::class, 'contact']);
 
 Route::get('/feedback', [HomeController::class, 'feedback']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

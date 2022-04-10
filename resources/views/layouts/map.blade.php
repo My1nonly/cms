@@ -11,3 +11,4 @@
     </div> <!-- end of map id-->
 
 </div>    <!-- end of map wrapper-->
+@endsection

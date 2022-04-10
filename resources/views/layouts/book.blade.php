@@ -21,3 +21,4 @@
     
     </div>
 </div> <!-- end of book online wrapper-->
+@endsection
