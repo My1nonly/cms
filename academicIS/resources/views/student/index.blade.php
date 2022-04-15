@@ -1,6 +1,13 @@
 @extends('student.layout')
 
 @section('content')
+<style type="text/css">
+		.pagination li{
+			float: left;
+			list-style-type: none;
+			margin:5px;
+		}
+</style>  
 <div class="row">
   <div class="col-lg-12 margin-tb">
      <div class="pull-left mt-2">
@@ -18,13 +25,18 @@
       <p>{{ $message }}</p>
     </div>
   @endif
-
+  form action="/student/search" method="GET">
+		<input type="text" name="search" placeholder="Finding student data" value="{{ old('search') }}">
+		<input type="submit" value="search">
+	</form>
   <table class="table table-bordered">
    <tr>
     <th>Nim</th>
     <th>Name</th>
     <th>Class</th>
     <th>Major</th>
+    <th>Address</th>
+    <th>Date Of Birth</th>
     <th width="280px">Action</th>
 </tr>
 @foreach ($student as $mhs)
@@ -34,6 +46,8 @@
     <td>{{ $mhs ->name }}</td>
     <td>{{ $mhs ->class }}</td>
     <td>{{ $mhs ->major }}</td>
+    <td>{{ $mhs ->address }}</td>
+    <td>{{ $mhs ->dob }}</td>
     <td>
     <form action="{{ route('student.destroy',['student'=>$mhs->nim]) }}" method="POST">
 

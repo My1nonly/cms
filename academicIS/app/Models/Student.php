@@ -22,5 +22,7 @@ protected $fillable = [
     'Name',
     'Class',
     'Major',
+    'Address',
+    'dob',
     ];
 };

@@ -46,6 +46,8 @@ class StudentController extends Controller
     'Name' => 'required',
     'Class' => 'required',
     'Major' => 'required',
+    'Address' => 'required',
+    'dob' => 'required',
     ]);
 
     // eloquent function to add data
@@ -98,6 +100,8 @@ class StudentController extends Controller
     'Name' => 'required',
     'Class' => 'required',
     'Major' => 'required',
+    'Address' => 'required',
+    'dob' => 'required',
     ]);
 
     //Eloquent function to update the data
@@ -107,6 +111,8 @@ class StudentController extends Controller
     'name'=>$request->Name,
     'class'=>$request->Class,
     'major'=>$request->Major,
+    'address'=>$request->Address,
+    'dob'=>$request->dob,
     ]);
 
     //if the data successfully updated, will return to main page

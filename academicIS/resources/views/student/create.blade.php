@@ -38,7 +38,15 @@
 <div class="form-group">
     <label for="Major">Major</label>
     <input type="Major" name="Major" class="form-control" id="Major" ariadescribedby="Major" >
-    </div>
+</div>
+<div class="form-group">
+    <label for="Address">Address</label>
+    <input type="Address" name="Address" class="form-control" id="Address" ariadescribedby="Address">
+</div>
+<div class="form-group">
+    <label for="DateOfBirth">Date Of Birth</label>
+    <input type="date" name="dob" class="form-control" id="dob" ariadescribedby="dob">
+</div>
    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
