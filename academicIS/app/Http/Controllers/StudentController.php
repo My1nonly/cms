@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use DB;
+use App\Models\ClassModel;
 
 class StudentController extends Controller
 {
@@ -16,7 +17,7 @@ class StudentController extends Controller
     public function index()
     {
         // the eloquent function to displays data
-    $student = Student::all(); // Mengambil semua isi tabel
+    $student = Student::with('class')->get(); // Mengambil semua isi tabel
     $paginate = Student::orderBy('id_student', 'asc')->paginate(3);
     return view('student.index', ['student' => $student,'paginate'=>$paginate]);
     }
@@ -28,7 +29,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('student.create');
+        $class = ClassModel::all(); //get data from class table
+        return view('student.create', ['class' => $class]);
     }
 
     /**
@@ -46,9 +48,20 @@ class StudentController extends Controller
     'Name' => 'required',
     'Class' => 'required',
     'Major' => 'required',
-    'Address' => 'required',
-    'dob' => 'required',
     ]);
+
+    $student = new Student;
+    $student -> nim = $request->get('Nim');
+    $student -> name = $request->get('Name');
+    $student -> major = $request->get('Major');
+    $student->save();
+
+    $class = new ClassModel;
+    $class->id = $request->get('Class');
+
+    //eloquent function to add data using belongsTo relation
+    $student->class()->associate($class);
+    $student->save();
 
     // eloquent function to add data
     Student::create($request->all());
@@ -68,8 +81,10 @@ class StudentController extends Controller
     public function show($nim)
     {
     // displays detailed data by finding / by Student Nim
-    $Student = Student::where('nim', $nim)->first();
-    return view('student.detail', compact('Student')); 
+    //code before we create a relation --> $student = student::find($nim);
+    $Student = Student::with('class')->where('nim', $nim)->first();
+    
+    return view('student.detail', ['student' => $Student]); 
     }
 
     /**
@@ -81,8 +96,9 @@ class StudentController extends Controller
     public function edit($nim)
     {
     // displays detail data by finding based on Student Nim for editing
-    $Student = Student::where('nim', $nim)->first();
-    return view('student.edit', compact('Student'));
+    $Student = Student::with('class')->where('nim', $nim)->first();
+    $class = ClassModel::all(); //get data from class table
+    return view('student.edit', compact('Student', 'class'));
     }
 
     /**
@@ -100,9 +116,20 @@ class StudentController extends Controller
     'Name' => 'required',
     'Class' => 'required',
     'Major' => 'required',
-    'Address' => 'required',
-    'dob' => 'required',
     ]);
+
+    $student = Student::with('class')->where('nim', $nim)->first();
+    $student -> nim = $request->get('Nim');
+    $student -> name = $request->get('Name');
+    $student -> major = $request->get('Major');
+    $student->save();
+
+    $class = new ClassModel;
+    $class->id = $request->get('Class');
+
+    //eloquent function to add data using belongsTo relation
+    $student->class()->associate($class);
+    $student->save();
 
     //Eloquent function to update the data
     Student::where('nim', $nim)

@@ -44,7 +44,7 @@
 
     <td>{{ $mhs ->nim }}</td>
     <td>{{ $mhs ->name }}</td>
-    <td>{{ $mhs ->class }}</td>
+    <td>{{ $mhs ->class->class_name }}</td>
     <td>{{ $mhs ->major }}</td>
     <td>{{ $mhs ->address }}</td>
     <td>{{ $mhs ->dob }}</td>

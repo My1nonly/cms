@@ -49,8 +49,18 @@
 </div>
    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+</div class="form-group">
+    <label for="Class">Class</lable>
+    <select name="Class" class="form-control">
+        @foreach($class as $kls)
+            <option value="{{$kls->id}}">{{$kls->class_name}}</option>
+        @endforeach
+</select>
+
+
 </div>
 </div>
 </div>
-</div>
+
+
 @endsection
