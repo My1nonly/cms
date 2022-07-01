@@ -15,6 +15,9 @@ use Illuminate\Http\Request;
 |
 */
 
+
 Route::resource('student', StudentController::class);
     
 
+use App\Http\Controllers\ArticleController;
+Route::resource('articles', ArticleController::class);
