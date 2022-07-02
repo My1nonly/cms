@@ -68,7 +68,8 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        $article = Article::find($id);
+        return view('article.edit', ['article' =>$article]);
     }
 
     /**
@@ -78,9 +79,20 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, $id)
     {
-        //
+        $article = Article::find($id);
+        $article->content = $request->content;
+
+        if ($article->featured_image && file_exist(storage_path('app/public' . $article->feature_image))){
+            storage::delete('public/' . $article->featured_image);
+        }
+        $image_name = $request->file('image', 'public');
+        $article->featured_image = $image_name;
+
+        $article->save();
+        return refirect()->route('article.index')
+        ->with('success', 'Article Succesfully Updated');
     }
 
     /**
